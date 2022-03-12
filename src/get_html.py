@@ -3,15 +3,18 @@ import asyncio
 from pyppeteer import launch
 from bs4 import BeautifulSoup
 
+# pyppeteer→BeautifulSoup→pandasでHTMLのtableを読み込む
 async def get_html():
 	try:
-		# pyppeteer→BeautifulSoup→pandasでHTMLのtableを読み込む
+		# pyppeteer
 		browser = await launch()
 		page = await browser.newPage()
 		response = await page.goto("https://スクレイピングしたいWebサイトのURL")
 		html = await page.content()
+		# BeautifulSoup
 		soup = BeautifulSoup(html, "lxml")
 		tables = soup.find_all("table")
+		# pandas
 		dfs = pd.read_html(str(tables))
 
 	except:
@@ -19,7 +22,7 @@ async def get_html():
 		print("Error")
 
 	else:
-		# Pandsのデータフレーム処理を書く
+		# pandasのデータフレーム処理を書く
 		print(dfs)
 
 	finally:

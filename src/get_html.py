@@ -31,3 +31,4 @@ async def get_html():
 
 # get_html関数呼び出し
 asyncio.get_event_loop().run_until_complete(get_html())
+

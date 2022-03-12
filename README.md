@@ -3,5 +3,5 @@
 
 
 ## 説明
-下記リンクを参照<br>
+下記リンク参照<br>
 https://qiita.com/takanori-azegami-jp/items/bbac2464d6874b4d96cb

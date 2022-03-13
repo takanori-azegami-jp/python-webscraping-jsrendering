@@ -1,5 +1,5 @@
 # Python-WebScraping-JavaScriptRendering
-【Python】JavaScriptレンダリングページからHTMLのtableをスクレイピングする（Puppeteer→BeautifulSoup→Pandas）
+【Python】JavaScriptレンダリングページからHTMLのtableをスクレイピングする（Playwright→BeautifulSoup→Pandas）
 
 
 ## 説明

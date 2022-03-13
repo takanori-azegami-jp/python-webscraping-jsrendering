@@ -1,16 +1,16 @@
 import pandas as pd
-import asyncio
-from pyppeteer import launch
 from bs4 import BeautifulSoup
+from playwright.sync_api import sync_playwright
 
-# pyppeteer→BeautifulSoup→pandasでHTMLのtableを読み込む
-async def get_html():
+# playwright→BeautifulSoup4→pandasでHTMLのtableを読み込む
+def get_html(playwright):
 	try:
-		# pyppeteer
-		browser = await launch()
-		page = await browser.newPage()
-		response = await page.goto("https://スクレイピングしたいWebサイトのURL")
-		html = await page.content()
+		# playwright
+		browser = playwright.chromium.launch()
+		context  = browser.new_context()
+		page = context.new_page()
+		page.goto("https://スクレイピングしたいWebサイトのURL")
+		html = page.content()
 		# BeautifulSoup
 		soup = BeautifulSoup(html, "lxml")
 		tables = soup.find_all("table")
@@ -26,9 +26,10 @@ async def get_html():
 		print(dfs)
 
 	finally:
-		# ブラウザクローズしないとメモリリークするので注意
-		await browser.close()
+		page.close()
+		context.close()
+		browser.close()
 
 # get_html関数呼び出し
-asyncio.get_event_loop().run_until_complete(get_html())
-
+with sync_playwright() as playwright:
+	get_html(playwright)

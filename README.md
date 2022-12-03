@@ -1,4 +1,4 @@
-# Python-WebScraping-JavaScriptRendering
+# python-webscraping-jsrendering
 【Python】JavaScriptレンダリングページからHTMLのtableをスクレイピングする（Playwright→BeautifulSoup→Pandas）
 
 
